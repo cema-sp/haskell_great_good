@@ -16,8 +16,8 @@ instance Read Contact where
     [(Contact { firstName = fn, lastName = ln, phone = p }, unwords rest)]
     where
       (fn : ln : rest1) = words input
-      (_, _, _, (p : rest)) =
-        (unwords rest1) =~ "\\((.*)\\)(.*)" :: (String, String, String, [String])
+      (_, _, _, p : rest) =
+        unwords rest1 =~ "\\((.*)\\)(.*)" :: (String, String, String, [String])
 
 instance Eq Contact where
   c1 == c2 = (firstName c1 == firstName c2) &&
